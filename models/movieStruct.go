@@ -36,7 +36,7 @@ func SaveMovies(movies []Movies) {
 		panic(err)
 	}
 
-	err = os.WriteFile("./data/movieData.json", moviesByte, 0644)
+	err = os.WriteFile("./data/update-movieData.json", moviesByte, 0644)
 
 	if err != nil {
 		panic(err)

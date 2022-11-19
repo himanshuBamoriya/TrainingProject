@@ -1,15 +1,23 @@
 package main
 
-import "github.com/himanshuBamoriya/MovieApiTrainingPorj/models"
+import (
+	"encoding/json"
+	"github.com/himanshuBamoriya/MovieApiTrainingPorj/models"
+	"net/http"
+)
 
 func main() {
-	a := models.GetMovies()
-	a = append(a, models.Movies{
-		Id:     1,
-		Name:   "luck",
-		Gener:  "drama",
-		Rating: 4,
-		Plot:   "abc",
-	})
-	models.SaveMovies(a)
+	http.HandleFunc("/", HttpHandler)
+	http.ListenAndServe(":8080", nil)
+}
+
+func HttpHandler(writer http.ResponseWriter, request *http.Request) {
+	movies := models.GetMovies()
+	movieByte, err := json.Marshal(movies)
+
+	if err != nil {
+		panic(err)
+	}
+
+	writer.Write(movieByte)
 }
