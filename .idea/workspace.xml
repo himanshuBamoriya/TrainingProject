@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f92dc9de-95dc-4ef0-b086-5d2e89f027af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/movieData.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/movieData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/update-movieData.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/movieStruct.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/movieStruct.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +63,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "go.vgo"
   }
 }]]></component>
@@ -68,6 +71,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Models" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="removeData" />
+    </option>
   </component>
   <component name="RunManager" selected="Go Build.go build github.com/himanshuBamoriya/MovieApiTrainingPorj">
     <configuration name="go build github.com/himanshuBamoriya/MovieApiTrainingPorj" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">

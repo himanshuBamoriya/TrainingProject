@@ -7,12 +7,12 @@ import (
 )
 
 type Movies struct {
-	Id       int
-	Name     string
-	Gener    string
-	Rating   float64
-	Plot     string
-	released bool
+	Id       int     `json:"id,omitempty"`
+	Name     string  `json:"name,omitempty"`
+	Gener    string  `json:"gener,omitempty"`
+	Rating   float64 `json:"rating,omitempty"`
+	Plot     string  `json:"plot,omitempty"`
+	Released bool    `json:"released,omitempty"`
 }
 
 func GetMovies() (movies []Movies) {
@@ -30,13 +30,13 @@ func GetMovies() (movies []Movies) {
 }
 
 func SaveMovies(movies []Movies) {
-	moviesByte, err := json.Marshal(movies)
+	moviesByte, err := json.MarshalIndent(movies, "", "    ")
 
 	if err != nil {
 		panic(err)
 	}
 
-	err = os.WriteFile("./data/update-movieData.json", moviesByte, 0644)
+	err = os.WriteFile("./data/movieData.json", moviesByte, 0644)
 
 	if err != nil {
 		panic(err)
