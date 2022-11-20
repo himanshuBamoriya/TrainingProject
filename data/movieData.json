@@ -45,13 +45,5 @@
         "rating": 4.6,
         "plot": "abcdef",
         "released": true
-    },
-    {
-        "id": 118,
-        "name": "burnout-3",
-        "gener": "drama/Action/hollow",
-        "rating": 4,
-        "plot": "hownd",
-        "released": true
     }
 ]

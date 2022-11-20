@@ -6,6 +6,24 @@ import (
 	"os"
 )
 
+type Response struct {
+	Code   int      `json:"code,omitempty"`
+	Status string   `json:"status,omitempty"`
+	Data   []Movies `json:"data"`
+}
+
+type SingleResponse struct {
+	Code   int    `json:"code,omitempty"`
+	Status string `json:"status,omitempty"`
+	Data   Movies `json:"data"`
+}
+
+type DeleteStatus struct {
+	Code   int    `json:"code,omitempty"`
+	Status string `json:"status,omitempty"`
+	Data   string `json:"data"`
+}
+
 type Movies struct {
 	Id       int     `json:"id,omitempty"`
 	Name     string  `json:"name,omitempty"`
@@ -41,4 +59,46 @@ func SaveMovies(movies []Movies) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func ErrorResponse(code int) (resp []byte) {
+	response := Response{
+		Code:   code,
+		Status: "ERROR",
+	}
+
+	responseByte, err := json.MarshalIndent(response, "", "    ")
+
+	if err != nil {
+		panic(err)
+	}
+
+	return responseByte
+}
+
+func GetResponse(movie []Movies) (resp Response) {
+	var response = Response{
+		Code:   200,
+		Status: "SUCCESS",
+		Data:   movie,
+	}
+	return response
+}
+
+func GetSingleResponse(movie Movies) (resp SingleResponse) {
+	var response = SingleResponse{
+		Code:   200,
+		Status: "SUCCESS",
+		Data:   movie,
+	}
+	return response
+}
+
+func MovieDeleted() (resp DeleteStatus) {
+	var response = DeleteStatus{
+		Code:   200,
+		Status: "SUCCESS",
+		Data:   "Movie Deleted Successfully",
+	}
+	return response
 }
