@@ -25,7 +25,19 @@ func RequestHandler() {
 	moviesRouter.HandleFunc("/movies/{id}", DeleteMovieById).Methods("DELETE")
 	moviesRouter.HandleFunc("/movies/{id}", UpdateMovieById).Methods("PUT")
 
+	moviesRouter.NotFoundHandler = http.HandlerFunc(handleErrors)
+	moviesRouter.MethodNotAllowedHandler = http.HandlerFunc(handleMethodErrors)
+
 	log.Fatal(http.ListenAndServe(":8080", moviesRouter))
+}
+
+func handleErrors(writer http.ResponseWriter, _ *http.Request) {
+	writer.WriteHeader(404)
+	writer.Write(models.ErrorResponse(404))
+}
+func handleMethodErrors(writer http.ResponseWriter, _ *http.Request) {
+	writer.WriteHeader(405)
+	writer.Write(models.ErrorResponse(405))
 }
 
 func UpdateMovieById(writer http.ResponseWriter, request *http.Request) {
@@ -37,7 +49,6 @@ func UpdateMovieById(writer http.ResponseWriter, request *http.Request) {
 	err = json.Unmarshal(body, &newMovie)
 	if err != nil {
 		writer.WriteHeader(400)
-		//models.GetError(400)
 		fmt.Fprintf(writer, "Bad Request")
 	}
 	movies := models.GetMovies()
@@ -48,21 +59,15 @@ func UpdateMovieById(writer http.ResponseWriter, request *http.Request) {
 		writer.Write([]byte("mismatched key type for id"))
 		return
 	}
-	movies = append(movies, newMovie)
+
 	for idx, movie := range movies {
 		if movie.Id == key {
 			movies = removeData(movies, idx)
 			break
 		}
 	}
-	jsonResp := models.GetSingleResponse(newMovie)
-	jsonData, err := json.MarshalIndent(jsonResp, "", "    ")
-	if err != nil {
-		writer.WriteHeader(400)
-		errorStatus := models.ErrorResponse(400)
-		writer.Write(errorStatus)
-	}
-	writer.Write(jsonData)
+	movies = append(movies, newMovie)
+	WriteSingleResponse(newMovie, writer)
 	models.SaveMovies(movies)
 
 }
@@ -107,17 +112,7 @@ func removeData(movie []models.Movies, idx int) []models.Movies {
 func GetAllMovies(writer http.ResponseWriter, _ *http.Request) {
 	movies := models.GetMovies()
 
-	//movieByte, err := json.MarshalIndent(movies, "", "    ")
-
-	jsonResp := models.GetResponse(movies)
-	jsonData, err := json.MarshalIndent(jsonResp, "", "    ")
-	if err != nil {
-		writer.WriteHeader(400)
-		errorStatus := models.ErrorResponse(400)
-		writer.Write(errorStatus)
-	}
-	writer.Write(jsonData)
-	//writer.Write(movieByte)
+	WriteResponse(movies, writer)
 }
 
 func SaveMovies(writer http.ResponseWriter, request *http.Request) {
@@ -129,14 +124,7 @@ func SaveMovies(writer http.ResponseWriter, request *http.Request) {
 			writer.WriteHeader(400)
 			fmt.Fprintf(writer, "Bad Request")
 		}
-		jsonResp := models.GetResponse(movies)
-		jsonData, err := json.MarshalIndent(jsonResp, "", "    ")
-		if err != nil {
-			writer.WriteHeader(400)
-			errorStatus := models.ErrorResponse(400)
-			writer.Write(errorStatus)
-		}
-		writer.Write(jsonData)
+		WriteResponse(movies, writer)
 		models.SaveMovies(movies)
 
 	} else {
@@ -153,28 +141,39 @@ func SaveMoviesById(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(400)
 		errorStatus := models.ErrorResponse(400)
 		writer.Write(errorStatus)
-		//writer.Write([]byte("mismatched key type for id"))
 		return
 	}
 	movies := models.GetMovies()
 
 	for _, movie := range movies {
 		if movie.Id == key {
-			//encode := json.NewEncoder(writer)
-			//encode.SetIndent("", "    ")
-			//encode.Encode(movie)
-			jsonResp := models.GetSingleResponse(movie)
-			jsonData, err := json.MarshalIndent(jsonResp, "", "    ")
-			if err != nil {
-				writer.WriteHeader(400)
-				errorStatus := models.ErrorResponse(400)
-				writer.Write(errorStatus)
-			}
-			writer.Write(jsonData)
+			WriteSingleResponse(movie, writer)
 			return
 		}
 	}
 	writer.WriteHeader(404)
 	errorStatus := models.ErrorResponse(404)
 	writer.Write(errorStatus)
+}
+
+func WriteResponse(movies []models.Movies, writer http.ResponseWriter) {
+	jsonResp := models.GetResponse(movies)
+	jsonData, err := json.MarshalIndent(jsonResp, "", "    ")
+	if err != nil {
+		writer.WriteHeader(400)
+		errorStatus := models.ErrorResponse(400)
+		writer.Write(errorStatus)
+	}
+	writer.Write(jsonData)
+}
+
+func WriteSingleResponse(movie models.Movies, writer http.ResponseWriter) {
+	jsonResp := models.GetSingleResponse(movie)
+	jsonData, err := json.MarshalIndent(jsonResp, "", "    ")
+	if err != nil {
+		writer.WriteHeader(400)
+		errorStatus := models.ErrorResponse(400)
+		writer.Write(errorStatus)
+	}
+	writer.Write(jsonData)
 }
