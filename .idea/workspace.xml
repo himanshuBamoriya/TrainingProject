@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f92dc9de-95dc-4ef0-b086-5d2e89f027af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +36,8 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -49,6 +52,8 @@
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
     "WebServerToolWindowFactoryState": "false",
+    "configurable..is.expanded": "false",
+    "configurable.GoLibrariesConfigurable.is.expanded": "true",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "last_opened_file_path": "/Users/himanshubamoriya/go/src/github.com/himanshuBamoriya/MovieApiTrainingPorj",
@@ -56,7 +61,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.editor.code.editing"
+    "settings.editor.selected.configurable": "go.vgo"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -68,6 +73,10 @@
     <configuration name="go build github.com/himanshuBamoriya/MovieApiTrainingPorj" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="MovieApiTrainingPorj" />
       <working_directory value="$PROJECT_DIR$" />
+      <envs>
+        <env name="GOOS" value="darwin" />
+        <env name="GOARCH" value="arm64" />
+      </envs>
       <kind value="PACKAGE" />
       <package value="github.com/himanshuBamoriya/MovieApiTrainingPorj" />
       <directory value="$PROJECT_DIR$" />
@@ -99,7 +108,6 @@
     </option>
   </component>
   <component name="VgoProject">
-    <integration-enabled>false</integration-enabled>
     <settings-migrated>true</settings-migrated>
   </component>
 </project>
