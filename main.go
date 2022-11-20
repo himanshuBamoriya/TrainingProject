@@ -20,11 +20,11 @@ func RequestHandler() {
 	moviesRouter := mux.NewRouter().StrictSlash(true)
 
 	moviesRouter.HandleFunc("/", GetAllMovies).Methods("GET")
+	moviesRouter.HandleFunc("/movies/{id}", SaveMoviesById).Methods("GET")
 	moviesRouter.HandleFunc("/movies", SaveMovies).Methods("POST")
 	moviesRouter.HandleFunc("/movies/{id}", DeleteMovieById).Methods("DELETE")
 	moviesRouter.HandleFunc("/movies/{id}", UpdateMovieById).Methods("PUT")
-	//moviesRouter.HandleFunc("/movies", SaveMovies).Methods("GET")
-	moviesRouter.HandleFunc("/movies/{id}", SaveMoviesById).Methods("GET")
+
 	log.Fatal(http.ListenAndServe(":8080", moviesRouter))
 }
 
@@ -94,7 +94,7 @@ func removeData(movie []models.Movies, idx int) []models.Movies {
 	return movie[:len(movie)-1]
 }
 
-func GetAllMovies(writer http.ResponseWriter, request *http.Request) {
+func GetAllMovies(writer http.ResponseWriter, _ *http.Request) {
 	movies := models.GetMovies()
 
 	movieByte, err := json.MarshalIndent(movies, "", "    ")
@@ -109,9 +109,6 @@ func GetAllMovies(writer http.ResponseWriter, request *http.Request) {
 func SaveMovies(writer http.ResponseWriter, request *http.Request) {
 	if request.Method == "POST" {
 		body, err := io.ReadAll(request.Body)
-		if err != nil {
-			panic(err)
-		}
 		var movies []models.Movies
 		err = json.Unmarshal(body, &movies)
 		if err != nil {
@@ -139,7 +136,9 @@ func SaveMoviesById(writer http.ResponseWriter, request *http.Request) {
 
 	for _, movie := range movies {
 		if movie.Id == key {
-			json.NewEncoder(writer).Encode(movie)
+			encode := json.NewEncoder(writer)
+			encode.SetIndent("", "    ")
+			encode.Encode(movie)
 			return
 		}
 	}

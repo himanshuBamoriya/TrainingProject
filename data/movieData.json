@@ -1,1 +1,57 @@
-[{"id":6,"name":"Silicon valley","gener":"comedy","rating":4.5,"plot":"Richard, a programmer, creates an app called the Pied Piper and tries to get investors for it. Meanwhile, five other programmers struggle to make their mark in Silicon Valley."},{"id":7,"name":"Silicon Galley","rating":5.5,"plot":"Richard, a programmer, creates an app called the Pied Piper and tries to get investors for it."},{"id":3,"name":"burnout","gener":"drama","rating":4.6,"plot":"abcdef"},{"id":1,"name":"luck","gener":"drama","rating":4,"plot":"abc"},{"id":11,"name":"burnout-3","gener":"drama/Action/hollow","rating":4,"plot":"hownd"},{"id":8,"name":"burnout2","gener":"drama/Action","rating":4.6,"plot":"abcdef"},{"id":118,"name":"burnout-3","gener":"drama/Action/hollow","rating":4,"plot":"hownd"}]
+[
+    {
+        "id": 6,
+        "name": "Silicon valley",
+        "gener": "comedy",
+        "rating": 4.5,
+        "plot": "Richard, a programmer, creates an app called the Pied Piper and tries to get investors for it. Meanwhile, five other programmers struggle to make their mark in Silicon Valley.",
+        "released": true
+    },
+    {
+        "id": 7,
+        "name": "Silicon Galley",
+        "rating": 5.5,
+        "plot": "Richard, a programmer, creates an app called the Pied Piper and tries to get investors for it.",
+        "released": true
+    },
+    {
+        "id": 3,
+        "name": "burnout",
+        "gener": "drama",
+        "rating": 4.6,
+        "plot": "abcdef",
+        "released": true
+    },
+    {
+        "id": 1,
+        "name": "luck",
+        "gener": "drama",
+        "rating": 4,
+        "plot": "abc",
+        "released": true
+    },
+    {
+        "id": 11,
+        "name": "burnout-3",
+        "gener": "drama/Action/hollow",
+        "rating": 4,
+        "plot": "hownd",
+        "released": true
+    },
+    {
+        "id": 8,
+        "name": "burnout2",
+        "gener": "drama/Action",
+        "rating": 4.6,
+        "plot": "abcdef",
+        "released": true
+    },
+    {
+        "id": 118,
+        "name": "burnout-3",
+        "gener": "drama/Action/hollow",
+        "rating": 4,
+        "plot": "hownd",
+        "released": true
+    }
+]
