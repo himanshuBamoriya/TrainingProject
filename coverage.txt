@@ -1,0 +1,16 @@
+mode: set
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:36.36,38.16 2 1
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:41.2,43.16 2 1
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:47.2,47.15 1 1
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:38.16,40.3 1 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:43.16,45.3 1 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:50.34,53.16 2 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:57.2,59.16 2 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:53.16,54.13 1 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:59.16,60.13 1 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:64.44,72.16 3 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:76.2,76.21 1 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:72.16,73.13 1 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:79.50,86.2 2 1
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:88.60,95.2 2 0
+github.com/himanshuBamoriya/MovieApiTrainingPorj/models/movieStruct.go:97.41,104.2 2 0
