@@ -9,6 +9,7 @@ import (
 	"github.com/himanshuBamoriya/MovieApiTrainingPorj/internals/models"
 )
 
+// new handler
 type handler struct {
 	sender internals.DataSender
 }
